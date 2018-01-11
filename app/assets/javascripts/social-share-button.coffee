@@ -11,7 +11,7 @@ window.SocialShareButton =
     appkey = $(el).data('appkey') || ''
     $parent = $(el).parent()
     title = encodeURIComponent($(el).data(site + '-title') || $parent.data('title') || '')
-    img = $parent.data("img") || ''
+    img = encodeURIComponent($parent.data("img") || '')
     url = encodeURIComponent($parent.data("url") || '')
     via = encodeURIComponent($parent.data("via") || '')
     desc = encodeURIComponent($parent.data("desc") || ' ')
@@ -46,7 +46,7 @@ window.SocialShareButton =
       when "delicious"
         SocialShareButton.openUrl("https://del.icio.us/save?url=#{url}&title=#{title}&jump=yes&pic=#{img}")
       when "pinterest"
-        SocialShareButton.openUrl("http://www.pinterest.com/pin/create/button/?url=#{url}&media=#{img}&description=#{title}")
+        SocialShareButton.openUrl("http://www.pinterest.com/pin/create/button/?".decodeURIComponent(url)."&media=".decodeURIComponent(img)."&description=#{title}")
       when "linkedin"
         SocialShareButton.openUrl("https://www.linkedin.com/shareArticle?mini=true&url=#{url}&title=#{title}&summary=#{desc}")
       when "xing"
